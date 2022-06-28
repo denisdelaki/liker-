@@ -1,0 +1,11 @@
+{
+  "profiles": [
+    {
+      "fName": "cynthia",
+      "lName": "cheruto",
+      "location": "Bomet",
+      "likes": 9,
+      "id": 2
+    }
+  ]
+}

@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <div>
+    <div id="profileCard">
         <!--create profile-->
         <form id="profileForm">
-            <label for="fName">First Name:</label><input type="text" name="fName">
-            <label for="lName">Last Name:</label><input type="text" name="lName">
-            <label for="location">Location</label><input type="text" name="location">
-            <label for="image">Upload Profile photo</label> <input type="file" name="image" id="image" accept="image/*" >
-            <input type="button" value="Create profile">
+            <label for="fName">First Name:</label><input type="text" name="fName" placeholder="Enter Your First Name "> <br>
+            <label for="lName">Last Name:</label><input type="text" name="lName" placeholder="Enter Your Last Name"> <br>
+            <label for="location">Location:</label><input type="text" name="location" placeholder="Enter Your current location"> <br>
+            <label for="image">Upload Profile photo</label> <input type="file" name="image" id="image" accept="image/*" ><br>
+            <button type="submit" id="submitButton">CREATE</button>
         </form>
     </div>
     <!--Render the profile-->
-    <div></div>
+    <div id="renderProfile">
+
+    </div>
   <script src="/assets/JS/script.js"></script>  
 </body>
 </html>
