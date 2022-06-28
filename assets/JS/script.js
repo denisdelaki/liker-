@@ -3,6 +3,7 @@ const renderProfile = document.getElementById('renderProfile')
   //event listeners 
 profileForm.addEventListener('submit', handleSubmit)
 //event handlers
+
   function handleSubmit(e) {
     e.preventDefault()
     let profile = {
@@ -19,10 +20,11 @@ profileForm.addEventListener('submit', handleSubmit)
   function getProfiles() {
     fetch("http://localhost:3000/profiles")
       .then(res => res.json())
-      .then(profiles => profiles.forEach(profile => {
-      renderProfiles(profile)
+      .then(profiles => profiles.forEach(profiles => {
+      renderProfiles(profiles)
     }))
   }
+  //fetch request to Postthe Data to the database 
  function postProfiles(profile) {
    fetch("http://localhost:3000/profiles", {
      method: "POST", 
@@ -36,6 +38,18 @@ profileForm.addEventListener('submit', handleSubmit)
      console.log(profile)
    })
  }
+ //fetch request to update the Likes 
+ function updateLikes(profiles) {
+   fetch(`http://localhost:3000/profiles/${profiles.id}`, {
+     method: "PATCH",
+     headers: {
+       "Content-Type":"application/json"
+     },
+     body:JSON.stringify(profiles)
+   })
+     .then(res => res.json())
+   .then(profile=>console.log(profile))
+ }
  function renderProfiles(profiles) {
   //  let profileImage = document.createElement('img')
   //  profileImage.src = `profiles.image`
@@ -44,16 +58,20 @@ profileForm.addEventListener('submit', handleSubmit)
    let profileLocation = document.createElement('p')
    profileLocation.textContent = `Location: ${profiles.location}`
    let profileLikes = document.createElement('span')
-   profileLikes.textContent = `Likes: ${profiles.likes}`
+   profileLikes.textContent= `${profiles.likes} likes`
    let likeButton = document.createElement('button')
    likeButton.type = "click"
    likeButton.textContent="LIKE💚"
-   likeButton.id="likeButton"
+   likeButton.id = "likeButton"
+   likeButton.addEventListener('click', () => {
+     profiles.likes += 1
+     updateLikes(profiles)
+   })
   //  renderProfile.appendChild(profileImage)
    renderProfile.appendChild(profileName)
    renderProfile.appendChild(profileLocation)
-   renderProfile.appendChild(profileLikes)
-   profileLikes.prepend(likeButton)
+   renderProfile.appendChild(likeButton)
+   renderProfile.appendChild(profileLikes);
  } 
  function initialize() {
    getProfiles()
