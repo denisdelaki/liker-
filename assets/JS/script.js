@@ -67,11 +67,22 @@ profileForm.addEventListener('submit', handleSubmit)
      profiles.likes += 1
      updateLikes(profiles)
    })
+   let commentSection = document.createElement('div')
+   commentSection.id="commentSection"
+   let profileComment = document.createElement('span')
+   profileComment.id = "comments"
+   let commentInput = document.createElement('input')
+   commentInput.id = "profileComment"
+   let reply = document.createElement('button')
+   reply.textContent="comment"
   //  renderProfile.appendChild(profileImage)
    renderProfile.appendChild(profileName)
    renderProfile.appendChild(profileLocation)
    renderProfile.appendChild(likeButton)
    renderProfile.appendChild(profileLikes);
+   commentSection.appendChild(commentInput)
+   commentSection.appendChild(reply);
+   renderProfile.appendChild(commentSection)
  } 
  function initialize() {
    getProfiles()
