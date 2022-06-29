@@ -1,10 +1,19 @@
 {
   "profiles": [
     {
-      "fName": "cynthia",
-      "lName": "cheruto",
+      "fName": "KIPYEGON",
+      "lName": "DENIS",
       "location": "Bomet",
-      "likes": 9,
+      "likes": 1,
+      "comments": "",
+      "id": 1
+    },
+    {
+      "fName": "KIPYEGON",
+      "lName": "DENIS",
+      "location": "jerusalem",
+      "likes": 0,
+      "comments": "",
       "id": 2
     }
   ]

@@ -10,9 +10,10 @@ profileForm.addEventListener('submit', handleSubmit)
       fName: e.target.fName.value,
       lName: e.target.lName.value,
       location: e.target.location.value,
-      likes:0
+      likes: 0,
+      comments:""
       // image: e.target.image.value
-    }
+    };
     renderProfiles(profile)
      postProfiles(profile);
   }
@@ -50,7 +51,9 @@ profileForm.addEventListener('submit', handleSubmit)
      .then(res => res.json())
    .then(profile=>console.log(profile))
  }
- function renderProfiles(profiles) {
+function renderProfiles(profiles) {
+  let profileDiv = document.createElement('div')
+  profileDiv.id="profileDIv"
   //  let profileImage = document.createElement('img')
   //  profileImage.src = `profiles.image`
    let profileName = document.createElement('p')
@@ -72,17 +75,31 @@ profileForm.addEventListener('submit', handleSubmit)
    let profileComment = document.createElement('span')
    profileComment.id = "comments"
    let commentInput = document.createElement('input')
-   commentInput.id = "profileComment"
+  commentInput.id = "profileComment"
+  commentInput.name = "comment"
    let reply = document.createElement('button')
-   reply.textContent="comment"
+  reply.textContent = "comment"
+  let comments = document.createElement("p");
+  comments.textContent=`${profiles.comments}`
+  reply.addEventListener('click', (e) => {
+    e.preventDefault()
+    profiles.comments = e.target.commentInput.value
+    updateLikes(profiles)
+    // profiles.comments = e.target.comment.value
+    // updateLikes(profiles)
+  })
+   
   //  renderProfile.appendChild(profileImage)
-   renderProfile.appendChild(profileName)
-   renderProfile.appendChild(profileLocation)
-   renderProfile.appendChild(likeButton)
-   renderProfile.appendChild(profileLikes);
+  renderProfile.appendChild(profileDiv);
+   profileDiv.appendChild(profileName)
+   profileDiv.appendChild(profileLocation)
+   profileDiv.appendChild(likeButton)
+   profileDiv.appendChild(profileLikes);
+   profileDiv.appendChild(commentSection)
    commentSection.appendChild(commentInput)
    commentSection.appendChild(reply);
-   renderProfile.appendChild(commentSection)
+   commentSection.appendChild(comments)
+
  } 
  function initialize() {
    getProfiles()
