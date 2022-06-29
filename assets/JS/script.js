@@ -80,14 +80,7 @@ function renderProfiles(profiles) {
    let reply = document.createElement('button')
   reply.textContent = "comment"
   let comments = document.createElement("p");
-  comments.textContent=`${profiles.comments}`
-  reply.addEventListener('click', (e) => {
-    e.preventDefault()
-    profiles.comments = e.target.commentInput.value
-    updateLikes(profiles)
-    // profiles.comments = e.target.comment.value
-    // updateLikes(profiles)
-  })
+   comments.textContent = `${profiles.comments}`;
    
   //  renderProfile.appendChild(profileImage)
   renderProfile.appendChild(profileDiv);

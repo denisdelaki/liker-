@@ -4,17 +4,9 @@
       "fName": "KIPYEGON",
       "lName": "DENIS",
       "location": "Bomet",
-      "likes": 1,
+      "likes": 2,
       "comments": "",
       "id": 1
-    },
-    {
-      "fName": "KIPYEGON",
-      "lName": "DENIS",
-      "location": "jerusalem",
-      "likes": 0,
-      "comments": "",
-      "id": 2
     }
   ]
 }
