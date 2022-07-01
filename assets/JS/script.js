@@ -19,29 +19,31 @@ profileForm.addEventListener('submit', handleSubmit)
   }
   // fetch request
   function getProfiles() {
-    fetch("http://localhost:3000/profiles")
-      .then(res => res.json())
-      .then(profiles => profiles.forEach(profiles => {
-      renderProfiles(profiles)
-    }))
+    fetch("https://denisdelaki.github.io/liker-/db.json")
+      .then((res) => res.json())
+      .then((profiles) =>
+        profiles.forEach((profiles) => {
+          renderProfiles(profiles);
+        })
+      );
   }
   //fetch request to Postthe Data to the database 
  function postProfiles(profile) {
-   fetch("http://localhost:3000/profiles", {
-     method: "POST", 
+   fetch("https://denisdelaki.github.io/liker-/db.json", {
+     method: "POST",
      headers: {
-       "Content-Type":"application/json"
+       "Content-Type": "application/json",
      },
-     body:JSON.stringify(profile)
+     body: JSON.stringify(profile),
    })
-     .then(res => res.json())
-     .then(profile=> {
-     console.log(profile)
-   })
+     .then((res) => res.json())
+     .then((profile) => {
+       console.log(profile);
+     });
  }
  //fetch request to update the Likes 
  function updateLikes(profiles) {
-   fetch(`http://localhost:3000/profiles/${profiles.id}`, {
+   fetch(`https://denisdelaki.github.io/liker-/${profiles.id}`, {
      method: "PATCH",
      headers: {
        "Content-Type":"application/json"
